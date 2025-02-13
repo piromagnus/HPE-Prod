@@ -14,10 +14,16 @@ It contains severals models within the folder `models`:
 
 ## Quick Start
 
+0. Download the models with the script 
+```bash
+    cd rtmpose_prod/scripts
+    bash download_models.sh
+```
 1. build the docker within rtmpose_prod folder
     ```bash
     docker build -t rtmdeploy_prod .
     ```
+
 
 2. then you can run 
 ```bash
