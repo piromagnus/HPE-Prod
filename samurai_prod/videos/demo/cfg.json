@@ -1,0 +1,8 @@
+
+{
+    "model" : "large",
+    "bbox" : false,
+    "mask" : true,
+    "background" : false,
+    "video_output" : "res.mp4"
+}
