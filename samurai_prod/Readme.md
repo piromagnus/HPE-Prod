@@ -32,3 +32,9 @@ python samurai_prod/get_bbox.py --video_path path/to/video --text_path path/to/t
 where the text file is the output file that contains the selected bounding box for the first frame of the the video
 2. Select the bbox by sliding the mouse on the first frame of the video
 3. Press 'q' to save the bbox
+
+
+
+# Acknowledgements
+This repo is based on the work of [samurai](https://github.com/yangchris11/samurai).
+The demo is a part of CMU Panoptic Studio project.

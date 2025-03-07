@@ -22,3 +22,7 @@ Each component has its own Docker configuration and usage instructions. Please r
 ├── samurai_prod/    # SAM-based tracking implementation
 └── README.md
 ```
+
+
+## License
+This repository is licensed under the Apache License. See the [LICENSE](LICENSE) file for more details.
