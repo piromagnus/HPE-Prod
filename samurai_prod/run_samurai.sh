@@ -52,6 +52,6 @@ echo "Video folder: ${VIDEO_PATH}"
 
 echo "Image name: ${IMAGE_NAME}"
 
-docker run --gpus all \
+docker run --gpus all --rm \
     -v "${VIDEO_PATH}":/data/videos \
     "${IMAGE_NAME}" 

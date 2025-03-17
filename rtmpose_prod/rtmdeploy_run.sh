@@ -72,6 +72,6 @@ echo "Video folder: ${VIDEO_PATH}"
 echo "Results folder: ${RESULTS_PATH}"
 echo "Image name: ${IMAGE_NAME}"
 
-docker run --gpus all \
+docker run --gpus all --rm \
     -v "${VIDEO_PATH}":/data/videos \
     "${IMAGE_NAME}" ${VIZ_FLAG} --res_folder /data/videos/${RESULTS_PATH} --pose_path "models/${MODEL}"
