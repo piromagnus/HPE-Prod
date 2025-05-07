@@ -27,7 +27,10 @@ ENV LD_LIBRARY_PATH="/root/workspace/mmdeploy/build/lib:${BACKUP_LD_LIBRARY_PATH
 ENV PATH="/root/workspace/mmdeploy/build/bin:${PATH}"
 ENV PYTHONPATH="/root/workspace/mmdeploy/build/lib:${PYTHONPATH}"
 
-COPY . /root/workspace
+COPY rtmdeploy.py /root/workspace
+COPY rtmdeploy_dist.py /root/workspace
+COPY models /root/workspace/models
+COPY utils /root/workspace/utils
 
 WORKDIR /root/workspace
 

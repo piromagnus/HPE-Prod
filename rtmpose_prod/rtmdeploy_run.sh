@@ -2,31 +2,34 @@
 
 # Script usage function
 usage() {
-    echo "Usage: $0 [-v video_path] [-r results_path] [-i image_name] [-z] [-m model_type]"
+    echo "Usage: $0 [-v video_path] [-r results_path] [-i image_name] [-z] [-m model_type] [-d device]"
     echo "Options:"
     echo "  -v : Path to videos directory (default: videos)"
     echo "  -r : Path to results directory (default: videos/res)"
     echo "  -i : Docker image name (default: rtmdeploy_prod:latest)"
     echo "  -z : Enable visualization"
     echo "  -m : Model type (coco, wholebody or halpe)"
+    echo "  -d : Device (default: cuda)"
     exit 1
 }
 
 # Default values
 VIDEO_PATH="videos"
 RESULTS_PATH="res"
-IMAGE_NAME="rtmdeploy_prod:latest"
+IMAGE_NAME="rtmdeploy_prod_v2:latest"
 VIZ_FLAG=""
 MODEL=""
-
+DEVICE="cuda"
 # Parse command line arguments
-while getopts "v:r:i:zm:h" opt; do
+while getopts "v:r:i:zm:d:h" opt; do
   case $opt in
     v) VIDEO_PATH="$OPTARG"
     ;;
     r) RESULTS_PATH="$OPTARG"
     ;;
     i) IMAGE_NAME="$OPTARG"
+    ;;
+    d) DEVICE="$OPTARG"
     ;;
     z) VIZ_FLAG="--visualize"
     ;;
@@ -63,15 +66,11 @@ echo "Video folder: ${VIDEO_PATH}"
 #         exit 1
 #     }
 # fi
-
-
-
-
 # RESULTS_PATH="${VIDEO_PATH}/res"
-
 echo "Results folder: ${RESULTS_PATH}"
 echo "Image name: ${IMAGE_NAME}"
 
-docker run --gpus all --rm \
+docker run --gpus 1 --rm \
     -v "${VIDEO_PATH}":/data/videos \
     "${IMAGE_NAME}" ${VIZ_FLAG} --res_folder /data/videos/${RESULTS_PATH} --pose_path "models/${MODEL}"
+    
